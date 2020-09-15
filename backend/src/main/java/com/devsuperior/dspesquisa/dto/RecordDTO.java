@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.Instant;
 
 import com.devsuperior.dspesquisa.entities.Record;
+import com.devsuperior.dspesquisa.entities.enums.Platform;
 
 public class RecordDTO  implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,16 +14,19 @@ public class RecordDTO  implements Serializable{
 	private String name;
 	private Integer age;
 	private String gameTitle;
+	private Platform platform;
 	private String genreName;
 	
 	public RecordDTO() {
 	}
+	
 	public RecordDTO(Record entity) {
 		id = entity.getId();
 		moment = entity.getMoment();
 		name = entity.getName();
 		age = entity.getAge();
 		gameTitle = entity.getGame().getTitle();
+		platform = entity.getGame().getPlatform();
 		genreName = entity.getGame().getGenre().getName();
 	}
 	public Long getId() {
@@ -60,6 +64,12 @@ public class RecordDTO  implements Serializable{
 	}
 	public void setGenreName(String genreName) {
 		this.genreName = genreName;
+	}
+	public Platform getPlatform() {
+		return platform;
+	}
+	public void setPlatform(Platform platform) {
+		this.platform = platform;
 	}
 	
 }
